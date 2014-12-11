@@ -27,8 +27,8 @@ namespace Laugh_and_Kill
             Config = new Menu("Laugh", "Laugh", true);
             Config.AddSubMenu(new Menu("On/Off", "On/Off"));
             Config.SubMenu("On/Off")
-                .AddItem(new MenuItem("EmoteToggable", "Toggleable Emote"))
-                .SetValue(new KeyBind('h', KeyBindType.Toggle));
+                .AddItem(new MenuItem("LaughSpam Toggle", "Toggleable Laugh"))
+                .SetValue(new KeyBind("H".ToCharArray()[0], KeyBindType.Toggle));
             Config.SubMenu("On/Off").AddItem(new MenuItem("Type", "Spam Laughing??")).SetValue(true);
 
             Config.AddToMainMenu();
@@ -56,12 +56,10 @@ namespace Laugh_and_Kill
             {
                 case GameEventId.OnChampionDoubleKill:
                 {
-                    if (Config.Item("EmoteToggable").GetValue<KeyBind>().Active)
-                    {
-                        SPAM();
-                    }
-                }
+                    if (!Config.Item("EmoteToggable").GetValue<KeyBind>().Active) return;
+                    SPAM();
                     break;
+                }
             }
         }
     }
