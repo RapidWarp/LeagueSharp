@@ -54,7 +54,7 @@ namespace Laugh_and_Kill
 
             switch (args.EventId)
             {
-                case GameEventId.OnChampionDoubleKill:
+                case GameEventId.OnChampionKill:
                 {
                     if (!Config.Item("EmoteToggable").GetValue<KeyBind>().Active) return;
                     SPAM();
